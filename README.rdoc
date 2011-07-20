@@ -1,0 +1,51 @@
+= sejmometr
+
+Ruby API for sejmometr.pl/api
+
+Gathering information about Polish Members of Parliment is easy now!
+
+==Version
+
+0.0.2
+
+== Install
+
+== Basic usage
+
+#initialize 
+members = Sejmometr::Members.new
+
+#download member list
+members.download
+
+#find one of the members with id="Kazimierz-Kutz"
+member = members.find("Kazimierz-Kutz")
+
+#download detailed information about selected member
+member.download
+
+#what about member absences?
+member.absences
+
+#find all members whose names is "Kutz" (returns array)
+members_kutz = members.find_by_surname("Kutz")
+
+#find all members from parliment club club_id="PIS" (returns array)
+members_pis = members.find_by_club_id("PIS")
+
+
+== Contributing to sejmometr
+ 
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
+* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
+* Fork the project
+* Start a feature/bugfix branch
+* Commit and push until you are happy with your contribution
+* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+
+== Copyright
+
+Copyright (c) 2011 Michal Ostrowski. See LICENSE.txt for
+further details.
+
