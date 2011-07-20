@@ -13,25 +13,26 @@ Gathering information about Polish Members of Parliment is easy now!
 == Basic usage
 
 #initialize 
-members = Sejmometr::Members.new
+    members = Sejmometr::Members.new
 
 #download member list
-members.download
+
+    members.download
 
 #find one of the members with id="Kazimierz-Kutz"
-member = members.find("Kazimierz-Kutz")
+    member = members.find("Kazimierz-Kutz")
 
 #download detailed information about selected member
-member.download
+    member.download
 
 #what about member absences?
-member.absences
+    member.absences
 
 #find all members whose names is "Kutz" (returns array)
-members_kutz = members.find_by_surname("Kutz")
+    members_kutz = members.find_by_surname("Kutz")
 
 #find all members from parliment club club_id="PIS" (returns array)
-members_pis = members.find_by_club_id("PIS")
+    members_pis = members.find_by_club_id("PIS")
 
 
 == Contributing to sejmometr
