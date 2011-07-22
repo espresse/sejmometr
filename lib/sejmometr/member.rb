@@ -37,6 +37,11 @@ module Sejmometr
       @data_slubowania = nil
       @szkola = nil
       
+      @absences = nil
+      @table = nil
+      @signed_projects = nil
+      @interpellations = nil
+      
       if member_hash
 	import(member_hash)
       end
@@ -57,9 +62,32 @@ module Sejmometr
     end
 
     def absences
-      absences = Sejmometr::MemberAbsences.new(@id)
-      absences.absences
+      if @absences.nil?
+	@absences = Sejmometr::MemberAbsences.new(@id)
+      end
+      @absences.absences
     end
+    
+    def table
+      if @table.nil?
+	@table = Sejmometr::MemberTable.new(@id)
+      end
+      @table.events
+    end
+    
+    def interpellations
+      if @interpellations.nil?
+	@interpellations = Sejmometr::MemberInterpellations.new(@id)
+      end
+      @interpellations.interpellations
+    end    
+    
+    def signed_projects
+      if @signed_projects.nil?
+	@signed_projects = Sejmometr::MemberSignedProjects.new(@id)
+      end
+      @signed_projects
+    end    
 
     private
 
@@ -79,13 +107,4 @@ module Sejmometr
 
   end
 end
-
-=begin
-  require 'sejmometr'
-  member = Sejmometr::Member.new
-  member.id = "Krystyna-Grabicka"
-  me
-  parliment.count
-  parliment.club_members("PO")
-=end
 

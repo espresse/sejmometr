@@ -2,12 +2,12 @@
 
 Gem::Specification.new do |s|
   s.name = "sejmometr"
-  s.version = "0.0.2"
+  s.version = "0.0.3"
   s.platform = Gem::Platform::RUBY
   s.authors = ["Michał Ostrowski"]
   s.email = ["ostrowski.michal@gmail.com"]
   s.summary = %q{Ruby API for sejmometr.pl}
-  s.description = %q{Ruby API for sejmometr.pl}
+  s.description = %q{Ruby API for sejmometr.pl. Take a look at README for more information.}
 
   s.files = `git ls-files`.split("\n")
   s.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
