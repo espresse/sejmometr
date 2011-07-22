@@ -4,12 +4,12 @@ module Sejmometr
     
     def initialize(member_id)
       @member_id = member_id
-      @interpellations = download_member_interpolations
+      @interpellations = download_member_interpellations
     end
     
     private
     
-    def download_member_interpolations
+    def download_member_interpellations
       list = true
       url = "http://api.sejmometr.pl/#{@member_id}/interpelacje?na_strone=100&str="
       i=0

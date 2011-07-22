@@ -1,5 +1,5 @@
 module Sejmometr
-  class MemberInterpolation
+  class MemberInterpellation
     attr_reader :id, :numer, :tytul, :data_wplywu, :tekst, :zglaszajacy, :adresat
 
       
