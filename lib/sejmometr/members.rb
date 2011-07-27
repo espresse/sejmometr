@@ -6,8 +6,8 @@ module Sejmometr
       @list = []
     end
 
-    def download(insist=false)
-      if insist
+    def download(force=false)
+      if force
         @list = download_member_list
       else
         if @list.empty?
@@ -55,35 +55,11 @@ module Sejmometr
 
 
     private
-
+ 
     def download_member_list
-      list = true
-      url = "http://api.sejmometr.pl/poslowie?na_strone=100&str="
-      i=0
-      members = []
-      while(list)
-        i+=1
-        resp = Net::HTTP.get_response(URI.parse(url + "#{i}"))
-        data = resp.body
-        result = JSON.parse(data) 
-        unless result["poslowie"].empty?
- 	  result["poslowie"].each do |posel|
-            members << Sejmometr::Member.new(posel)
-          end
-        else
-          list = false
-        end
-      end
-      members
+      connector = Sejmometr::Connector.new
+      connector.import("poslowie", nil, Sejmometr::Member, "poslowie")
     end
-
   end
 end
 
-=begin
-  require 'sejmometr'
-  parliment = Sejmometr::Members.new
-  parliment.download
-  parliment.count
-  parliment.find_by_club_id("PO")
-=end

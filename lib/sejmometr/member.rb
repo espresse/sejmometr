@@ -90,13 +90,10 @@ module Sejmometr
     end    
 
     private
-
+    
     def download_member
-      url = "http://api.sejmometr.pl/#{@id}/info"
-      resp = Net::HTTP.get_response(URI.parse(URI.encode(url)))
-      data = resp.body
-      result = JSON.parse(data)
-      import(result)
+      connector = Sejmometr::Connector.new
+      import(connector.import("#{@id}/info", nil, nil, nil))      
     end
 
     def import(member_hash)

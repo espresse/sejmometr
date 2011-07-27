@@ -13,24 +13,9 @@ module Sejmometr
     end
     
     def download_member_table
-      list = true
-      url = "http://api.sejmometr.pl/#{@member_id}/tablica?na_strone=100&str="
-      i=0
-      table = []
-      while(list)
-        i+=1
-        resp = Net::HTTP.get_response(URI.parse(url + "#{i}"))
-        data = resp.body
-        result = JSON.parse(data) 
-        unless result["tablica"].empty?
- 	  result["tablica"].each do |event|
-            table << Sejmometr::MemberTableEvent.new(event)
-          end
-        else
-          list = false
-        end
-      end
-      table
+      connector = Sejmometr::Connector.new
+      connector.import("#{@member_id}/tablica", nil, Sejmometr::MemberTableEvent, "tablica")
     end
+    
   end
 end

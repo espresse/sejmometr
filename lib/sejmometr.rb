@@ -2,6 +2,8 @@ require 'rubygems'
 require 'json'
 require 'net/http'
 
+require 'sejmometr/connector'
+
 require 'sejmometr/members'
 require 'sejmometr/member'
 require 'sejmometr/member_absences'

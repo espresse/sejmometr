@@ -16,19 +16,11 @@ module Sejmometr
     end
 
     private
-
+    
     def download_member_absences
-      absences = []
-      url = "http://api.sejmometr.pl/#{@member_id}/nieobecnosci"
-      resp = Net::HTTP.get_response(URI.parse(URI.encode(url)))
-      data = resp.body
-      result = JSON.parse(data)
-
-      result.each do |absence|
-	absences << Sejmometr::MemberAbsence.new(absence)
-      end
-
-      absences
+      connector = Sejmometr::Connector.new
+      connector.import("#{@member_id}/nieobecnosci", nil, Sejmometr::MemberAbsence, nil)
     end
+
   end
 end
